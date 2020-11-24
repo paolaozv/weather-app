@@ -3,7 +3,7 @@ import InfoWeather from './components/InfoWeather/InfoWeather';
 import SummaryWeather from './components/SummaryWeather/SummaryWeather';
 import styles from './styles/App.module.css';
 
-const App = () => {
+const App: React.FC = () => {
   return (
     <div className={styles.container}>
       <SummaryWeather />
