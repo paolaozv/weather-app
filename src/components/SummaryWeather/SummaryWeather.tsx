@@ -7,7 +7,11 @@ const SummaryWeather = () => {
 
   return (
     <div className={styles.container}>
-      {translate('searchInput')}
+      <input
+        type='text'
+        className={styles.input}
+        placeholder={translate('searchInput')}
+      />
     </div>
   );
 };

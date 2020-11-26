@@ -1,3 +1,5 @@
 {
-  "searchInput": "Suche nach Orten"
+  "searchInput": "Suche nach Orten",
+  "errorAccessDenied": "Benutzer verweigert Geolocation",
+  "errorNotGeolocation": "Geolocation wird von diesem Browser nicht unterstützt."
 }
