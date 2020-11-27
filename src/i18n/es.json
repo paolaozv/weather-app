@@ -1,5 +1,8 @@
 {
-  "searchInput": "Buscar por lugares",
+  "searchButton": "Buscar por lugares",
+  "searchLocation": "Buscar por lugar",
+  "search": "Buscar",
+  "noResults": "No hay resultados para tu búsqueda",
   "errorAccessDenied": "Usuario denegó geolocalización",
   "errorNotGeolocation": "Geolocalización no es soportada por este browser"
 }

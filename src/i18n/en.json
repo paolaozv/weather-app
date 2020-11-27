@@ -1,5 +1,8 @@
 {
-  "searchInput": "Search for places",
+  "searchButton": "Search for places",
+  "searchLocation": "Search location",
+  "search": "Search",
+  "noResults": "There is no result for your search",
   "errorAccessDenied": "User denied Geolocation",
   "errorNotGeolocation": "Geolocation is not supported by this browser."
 }

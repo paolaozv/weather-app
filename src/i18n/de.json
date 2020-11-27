@@ -1,5 +1,8 @@
 {
-  "searchInput": "Suche nach Orten",
+  "searchButton": "Suche nach Orten",
+  "searchLocation": "Suchort",
+  "search": "Suche",
+  "noResults": "Es gibt kein Ergebnis für Ihre Suche",
   "errorAccessDenied": "Benutzer verweigert Geolocation",
   "errorNotGeolocation": "Geolocation wird von diesem Browser nicht unterstützt."
 }

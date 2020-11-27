@@ -4,6 +4,10 @@ import reducer from './reducer';
 import en from './i18n/en.json';
 import es from './i18n/es.json';
 import de from './i18n/de.json';
+// types
+import { ResultsType } from './reducer';
+
+const proxy = 'http://cors-anywhere.herokuapp.com/';
 
 type AppProviderType = {
   children: ReactNode;
@@ -13,13 +17,24 @@ enum ActionType {
   SET_LANGUAGE = 'SET_LANGUAGE',
   SET_ERROR = 'SET_ERROR',
   SET_LATLONG = 'SET_LATLONG',
-  SET_WEATHER_ID = 'SET_WEATHER_ID'
+  SET_WEATHER_ID = 'SET_WEATHER_ID',
+  SET_LOADING = 'SET_LOADING',
+  SET_RESULTS = 'SET_RESULTS',
+  DISPLAY_WEATHER = 'DISPLAY_WEATHER'
 };
 
 type ContextProps = {
   language: string;
   setLanguage: (lang: string) => void;
   translate: (key: string) => string;
+  setQuery: (query: string) => void;
+  query: string;
+  results: ResultsType[] | null;
+  loading: boolean;
+  location: string | null;
+  weather: any;
+  searchQuery: () => void;
+  getWeather: (id: number) => void;
 };
 
 const AppContext: React.Context<ContextProps> = createContext({} as ContextProps);
@@ -30,6 +45,9 @@ const initialState = {
   error: '',
   woeid: null,
   location: null,
+  loading: false,
+  results: null,
+  weather: [],
   language: localStorageLang ? localStorageLang : 'EN'
 };
 const latLong = {
@@ -39,16 +57,26 @@ const latLong = {
 
 export const AppProvider: FC<AppProviderType> = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [query, setQuery] = useState('');
 
   const getWeather = useCallback(async (woeid) => {
-    const url = `https://www.metaweather.com/api/location/${woeid}/`;
+    dispatch({
+      type: ActionType.SET_LOADING,
+      payload: true
+    });
+    const url = `${proxy}https://www.metaweather.com/api/location/${woeid}/`;
     const response = await fetch(url);
     const weather = await response.json();
+    const { consolidated_weather, title } = weather;
+    dispatch({
+      type: ActionType.DISPLAY_WEATHER,
+      payload: { consolidated_weather, title }
+    });
     console.log(weather);
   }, []);
 
   const getWeatherId = useCallback(async (lat, long) => {
-    const url = `https://www.metaweather.com/api/location/search/?lattlong=${lat},${long}`;
+    const url = `${proxy}https://www.metaweather.com/api/location/search/?lattlong=${lat},${long}`;
     const response = await fetch(url);
     const locations = await response.json();
     dispatch({
@@ -123,12 +151,31 @@ export const AppProvider: FC<AppProviderType> = ({ children }) => {
     return langData[key];
   };
 
+  const searchQuery = async () => {
+    // setQuery('');
+    dispatch({
+      type: ActionType.SET_LOADING,
+      payload: true
+    });
+    const url = `${proxy}https://www.metaweather.com/api/location/search/?query=${query}`;
+    const response = await fetch(url);
+    const results = await response.json();
+    dispatch({
+      type: ActionType.SET_RESULTS,
+      payload: results
+    });
+  };
+
   return (
     <AppContext.Provider
       value={{
         ...state,
         setLanguage,
-        translate
+        translate,
+        query,
+        setQuery,
+        searchQuery,
+        getWeather
       }}
     >
       {children}

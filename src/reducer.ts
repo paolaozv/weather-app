@@ -5,6 +5,14 @@ type AppStateType = {
   woeid: null | number;
   location: null | string;
   language: string;
+  loading: boolean;
+  results: ResultsType[] | null;
+  weather: any;
+};
+
+export type ResultsType = {
+  title: string;
+  woeid: number;
 };
 
 type AppActionType = {
@@ -24,6 +32,15 @@ const reducer = (state: AppStateType, action: AppActionType): AppStateType => {
   }
   if (action.type === 'SET_WEATHER_ID') {
     return { ...state, woeid: action.payload.woeid, location: action.payload.title }
+  }
+  if (action.type === 'SET_LOADING') {
+    return { ...state, loading: true };
+  }
+  if (action.type === 'SET_RESULTS') {
+    return { ...state, loading: false, results: action.payload };
+  }
+  if (action.type === 'DISPLAY_WEATHER') {
+    return { ...state, location: action.payload.title, weather: action.payload.consolidated_weather, loading: false };
   }
   return state;
 };
