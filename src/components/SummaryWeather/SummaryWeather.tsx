@@ -4,10 +4,11 @@ import { useGlobalContext } from '../../context';
 import { ReactComponent as Search } from '../../assets/images/search.svg';
 import { ReactComponent as Close } from '../../assets/images/close.svg';
 import { ReactComponent as Arrow } from '../../assets/images/arrow.svg';
+// import background from '../../assets/images/background.png';
 import Loader from '../Loader/Loader';
 
 const SummaryWeather = () => {
-  const { translate, setQuery, query, searchQuery, results, loading, getWeather } = useGlobalContext();
+  const { translate, setQuery, query, searchQuery, results, loading, getWeather, firstLoading } = useGlobalContext();
   const [showSearch, setShowSearch] = useState(false);
 
   const handleOnChange = (e: any) => {
@@ -23,6 +24,14 @@ const SummaryWeather = () => {
     setShowSearch(false);
     getWeather(id);
   };
+
+  if (firstLoading) {
+    return (
+      <div className={styles.containerLoader}>
+        <Loader />
+      </div>
+    );
+  }
 
   return (
     <div className={styles.container}>
@@ -67,6 +76,7 @@ const SummaryWeather = () => {
           ))}
         </div>
       </div>
+      {/* <img src={background} alt='background' /> */}
     </div>
   );
 };

@@ -1,0 +1,16 @@
+.container {
+  background-color: var(--backgroundColorSecondary);
+  width: 120px;
+  height: 177px;
+  padding: 18px;
+  text-align: center;
+}
+
+.container .img {
+  width: 56px;
+}
+
+.container p {
+  font-size: 0.9rem;
+  color: var(--textColorSecondary);
+}

@@ -4,5 +4,13 @@
   "search": "Search",
   "noResults": "There is no result for your search",
   "errorAccessDenied": "User denied Geolocation",
-  "errorNotGeolocation": "Geolocation is not supported by this browser."
+  "errorNotGeolocation": "Geolocation is not supported by this browser.",
+  "Sun": "Sunday",
+  "Mon": "Monday",
+  "Tue": "Tuesday",
+  "Wed": "Wednesday",
+  "Thu": "Thursday",
+  "Fri": "Friday",
+  "Sat": "Saturday",
+  "Today": "Today"
 }

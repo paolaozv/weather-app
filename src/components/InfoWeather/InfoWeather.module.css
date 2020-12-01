@@ -43,3 +43,18 @@
   font-size: 0.9rem;
   font-weight: 500;
 }
+
+.footer {
+  text-align: center;
+}
+
+.footer .footerText {
+  color: var(--textColorSecondary);
+  font-size: 0.9rem;
+}
+
+.results .resultsDays {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

@@ -1,0 +1,25 @@
+.container {
+  width: 328px;
+  height: 159px;
+  padding: 24px 10px;
+  /* background-color: var(--backgroundColorSecondary); */
+  background-color: #fff;
+}
+
+.container .title {
+  width: 80px;
+  height: 25px;
+  margin: 0 auto 25px;
+  background-image: var(--gradient);
+  animation: var(--animation);
+  background-size: 275px;
+}
+
+.container .info {
+  width: 180px;
+  height: 45px;
+  margin: 0 auto;
+  background-image: var(--gradient);
+  animation: var(--animation);
+  background-size: 275px;
+}

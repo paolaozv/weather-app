@@ -5,7 +5,7 @@ import en from './i18n/en.json';
 import es from './i18n/es.json';
 import de from './i18n/de.json';
 // types
-import { ResultsType } from './reducer';
+import { ResultsType, TypeWeather } from './reducer';
 
 const proxy = 'http://cors-anywhere.herokuapp.com/';
 
@@ -20,7 +20,8 @@ enum ActionType {
   SET_WEATHER_ID = 'SET_WEATHER_ID',
   SET_LOADING = 'SET_LOADING',
   SET_RESULTS = 'SET_RESULTS',
-  DISPLAY_WEATHER = 'DISPLAY_WEATHER'
+  DISPLAY_WEATHER = 'DISPLAY_WEATHER',
+  SET_FIRST_LOADING = 'SET_FIRST_LOADING'
 };
 
 type ContextProps = {
@@ -32,9 +33,10 @@ type ContextProps = {
   results: ResultsType[] | null;
   loading: boolean;
   location: string | null;
-  weather: any;
+  weather: TypeWeather[];
   searchQuery: () => void;
   getWeather: (id: number) => void;
+  firstLoading: boolean;
 };
 
 const AppContext: React.Context<ContextProps> = createContext({} as ContextProps);
@@ -48,7 +50,8 @@ const initialState = {
   loading: false,
   results: null,
   weather: [],
-  language: localStorageLang ? localStorageLang : 'EN'
+  language: localStorageLang ? localStorageLang : 'EN',
+  firstLoading: true,
 };
 const latLong = {
   lat: 48.13743,
@@ -76,6 +79,10 @@ export const AppProvider: FC<AppProviderType> = ({ children }) => {
   }, []);
 
   const getWeatherId = useCallback(async (lat, long) => {
+    // dispatch({
+    //   type: ActionType.SET_FIRST_LOADING,
+    //   payload: true
+    // });
     const url = `${proxy}https://www.metaweather.com/api/location/search/?lattlong=${lat},${long}`;
     const response = await fetch(url);
     const locations = await response.json();

@@ -1,11 +1,15 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react';
 import styles from './InfoWeather.module.css';
 import { useGlobalContext } from '../../context';
+import SkeletonLoader from '../Skeleton/SkeletonLoader';
+import CardDay from '../CardDay/CardDay';
+import { formatDay, getWeatherState } from '../../utils';
 
 const InfoWeather = () => {
-  const { language, setLanguage } = useGlobalContext();
+  const { language, setLanguage, firstLoading, weather } = useGlobalContext();
   const [showDropDown, setShowDropDown] = useState(false);
   const dropdownEl = useRef<HTMLUListElement>(null);
+  const weatherFormat = weather.splice(5, 2);
 
   const handleClickOutside = useCallback((e) => {
     if (showDropDown && e.target.closest('.dropdownList') !== dropdownEl.current) {
@@ -26,6 +30,12 @@ const InfoWeather = () => {
     }
   }, [handleClickOutside]);
 
+  if (firstLoading) {
+    return (
+      <SkeletonLoader />
+    );
+  }
+
   return (
     <div className={styles.container}>
       <header className={styles.header}>
@@ -42,6 +52,27 @@ const InfoWeather = () => {
           )}
         </div>
       </header>
+      <div className={styles.results}>
+        <div className={styles.resultsDays}>
+          {weather.map(({
+            applicable_date,
+            id, max_temp,
+            min_temp,
+            weather_state_abbr
+          }, index) => {
+            const day = index === 0 ? 'Today' : formatDay(applicable_date);
+            const img = getWeatherState(weather_state_abbr);
+            return (
+              <CardDay key={id} max={max_temp} min={min_temp} day={day} img={img} />
+            )
+          })}
+        </div>
+      </div>
+      <footer className={styles.footer}>
+        <p className={styles.footerText}>
+          @paolaozv
+        </p>
+      </footer>
     </div>
   );
 };

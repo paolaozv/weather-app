@@ -10,6 +10,9 @@
   --backgroundColorBox: #6e707a;
   --buttonColor: #3c47e9;
   --barColor: #ffec65;
+  --gradient: linear-gradient(90deg, #ddd 0px, #e8e8e8 40px, #ddd 80px);
+  --animation: shine 1.6s infinite linear;
+  --animation-top: shine-top 1.6s infinite linear;
 }
 
 html,
@@ -35,4 +38,24 @@ ul {
 
 ul {
   list-style-type: none;
+}
+
+@keyframes shine {
+  0% {
+    background-position: -100px;
+  }
+  40%,
+  100% {
+    background-position: 200px;
+  }
+}
+
+@keyframes shine-top {
+  0% {
+    background-position: -100px;
+  }
+  40%,
+  100% {
+    background-position: 270px;
+  }
 }
