@@ -53,6 +53,10 @@
   font-size: 0.9rem;
 }
 
+.results {
+  margin-top: 20px;
+}
+
 .results .resultsDays {
   display: flex;
   align-items: center;

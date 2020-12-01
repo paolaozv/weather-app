@@ -17,6 +17,10 @@ const CardDay: React.FC<TypeWeather> = ({ day, img, max, min }) => {
     <div className={styles.container}>
       <p>{translate(`${day}`)}</p>
       <img className={styles.img} src={img} alt={day} />
+      <div className={styles.footer}>
+        <p>{`${min.toFixed(0)}°C`}</p>
+        <p>{`${max.toFixed(0)}°C`}</p>
+      </div>
     </div>
   );
 };
