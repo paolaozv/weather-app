@@ -9,7 +9,7 @@ const InfoWeather = () => {
   const { language, setLanguage, firstLoading, weather } = useGlobalContext();
   const [showDropDown, setShowDropDown] = useState(false);
   const dropdownEl = useRef<HTMLUListElement>(null);
-  const weatherFormat = weather.splice(5, 2);
+  weather.splice(5, 2);
 
   const handleClickOutside = useCallback((e) => {
     if (showDropDown && e.target.closest('.dropdownList') !== dropdownEl.current) {
@@ -66,6 +66,9 @@ const InfoWeather = () => {
               <CardDay key={id} max={max_temp} min={min_temp} day={day} img={img} />
             )
           })}
+        </div>
+        <div className={styles.resultsWind}>
+
         </div>
       </div>
       <footer className={styles.footer}>

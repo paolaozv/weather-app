@@ -12,5 +12,17 @@
   "Thu": "Donnerstag",
   "Fri": "Freitag",
   "Sat": "Samstag",
-  "Today": "Heute"
+  "Today": "Heute",
+  "Jan": "Jan",
+  "Feb": "Feb",
+  "Mar": "Mär",
+  "Apr": "Apr",
+  "May": "Mai",
+  "Jun": "Jun",
+  "Jul": "Jul",
+  "Aug": "Aug",
+  "Sep": "Sep",
+  "Oct": "Okt",
+  "Nov": "Nov",
+  "Dec": "Dez"
 }

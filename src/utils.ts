@@ -1,4 +1,4 @@
-const proxy = 'http://cors-anywhere.herokuapp.com/';
+// const proxy = 'http://cors-anywhere.herokuapp.com/';
 const url = `https://www.metaweather.com/static/img/weather/`;
 
 export const formatDate = () => {
@@ -37,18 +37,18 @@ export const getWeatherState = (code: string) => {
 };
 
 const months = [
-  'January',
-  'February',
-  'March',
-  'April',
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
   'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December'
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec'
 ];
 
 const days = [
@@ -79,4 +79,3 @@ export const formatDay = (date: string) => {
 
   return day;
 };
-

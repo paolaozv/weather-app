@@ -23,6 +23,7 @@ export type TypeWeather = {
   min_temp: number;
   the_temp: number;
   weather_state_abbr: string;
+  weather_state_name: string;
 };
 
 type AppActionType = {
