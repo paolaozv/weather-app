@@ -24,5 +24,10 @@
   "Sep": "Sep",
   "Oct": "Okt",
   "Nov": "Nov",
-  "Dec": "Dez"
+  "Dec": "Dez",
+  "subtitle": "Die heutigen Highlights",
+  "status": "Windstatus",
+  "humidity": "Feuchtigkeit",
+  "visibility": "Sichtweite",
+  "pressure": "Luftdruck"
 }

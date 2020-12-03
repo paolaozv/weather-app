@@ -7,7 +7,7 @@ type AppStateType = {
   language: string;
   loading: boolean;
   results: ResultsType[] | null;
-  weather: TypeWeather[];
+  weather: TypeWeather[] | null;
   firstLoading: boolean;
 };
 
@@ -24,6 +24,11 @@ export type TypeWeather = {
   the_temp: number;
   weather_state_abbr: string;
   weather_state_name: string;
+  air_pressure: number;
+  visibility: number;
+  humidity: number;
+  wind_speed: number;
+  wind_direction_compass: string;
 };
 
 type AppActionType = {
@@ -42,7 +47,7 @@ const reducer = (state: AppStateType, action: AppActionType): AppStateType => {
     return { ...state, lat: action.payload.lat, long: action.payload.long };
   }
   if (action.type === 'SET_WEATHER_ID') {
-    return { ...state, woeid: action.payload.woeid, location: action.payload.title, firstLoading: false };
+    return { ...state, woeid: action.payload.woeid, location: action.payload.title };
   }
   if (action.type === 'SET_LOADING') {
     return { ...state, loading: true };
@@ -51,7 +56,7 @@ const reducer = (state: AppStateType, action: AppActionType): AppStateType => {
     return { ...state, loading: false, results: action.payload };
   }
   if (action.type === 'DISPLAY_WEATHER') {
-    return { ...state, location: action.payload.title, weather: action.payload.consolidated_weather, loading: false };
+    return { ...state, location: action.payload.title, weather: action.payload.consolidated_weather, loading: false, firstLoading: false };
   }
   if (action.type === 'SET_FIRST_LOADING') {
     return { ...state, firstLoading: true };

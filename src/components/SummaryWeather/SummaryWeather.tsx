@@ -45,7 +45,7 @@ const SummaryWeather = () => {
         {translate('searchButton')}
       </button>
       <div className={styles.summaryContainer}>
-        {weather.slice(0, 1).map(({ id, the_temp, weather_state_abbr, weather_state_name }) => {
+        {weather && weather.slice(0, 1).map(({ id, the_temp, weather_state_abbr, weather_state_name }) => {
           const img = getWeatherState(weather_state_abbr);
           return (
             <div key={id} className={styles.summary}>

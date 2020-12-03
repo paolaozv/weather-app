@@ -2,9 +2,10 @@
   background-color: var(--backgroundColor);
   width: calc(100vw - 460px);
   height: 100vh;
-  padding: 40px 120px;
+  padding: 30px 120px;
   display: grid;
   grid-template-rows: auto 1fr auto;
+  overflow: scroll;
 }
 
 .header {
@@ -45,6 +46,7 @@
 }
 
 .footer {
+  padding: 0 0 30px;
   text-align: center;
 }
 
@@ -61,4 +63,123 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.results .resultsToday {
+  margin-top: 30px;
+}
+
+.results .resultsToday p {
+  color: var(--textColorSecondary);
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.results .resultsToday .info {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.results .resultsToday .info .wind,
+.humidity,
+.visibility,
+.pressure {
+  width: 328px;
+  margin-bottom: 30px;
+  padding: 25px 25px 35px;
+  background-color: var(--backgroundColorSecondary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.results .resultsToday .info .visibility,
+.pressure {
+  padding: 25px 25px 55px;
+}
+
+.results .resultsToday .info .wind,
+.humidity {
+  height: 204px;
+}
+
+.results .resultsToday .info .visibility,
+.pressure {
+  height: 159px;
+}
+
+.results .resultsToday .info p:first-child {
+  color: var(--textColorSecondary);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.results .resultsToday .info .wind .windSpeed {
+  font-size: 4rem;
+  font-weight: 600;
+  line-height: 0;
+  color: var(--textColorSecondary);
+}
+
+.results .resultsToday .info .wind .windSpeed span {
+  font-size: 2.5rem;
+}
+
+.results .resultsToday .info .wind .direction {
+  font-size: 0.9rem;
+}
+
+.results .resultsToday .info .wind .direction svg {
+  margin-right: 5px;
+}
+
+.results .resultsToday .info .humidity .totalPercent {
+  width: 180px;
+  height: 8px;
+  border-radius: 8px;
+  background-color: var(--textColorSecondary);
+}
+
+.results .resultsToday .info .humidity .totalPercent .percent {
+  width: 80%;
+  height: 8px;
+  border-radius: 8px;
+  background-color: var(--barColor);
+}
+
+.results .resultsToday .info .humidity .humidityPercent {
+  font-size: 4rem;
+  font-weight: 600;
+  line-height: 0;
+  color: var(--textColorSecondary);
+}
+
+.results .resultsToday .info .humidity .humidityPercent span {
+  font-size: 2.5rem;
+}
+
+.results .resultsToday .info .visibility .quantity {
+  font-size: 4rem;
+  font-weight: 600;
+  line-height: 0;
+  color: var(--textColorSecondary);
+}
+
+.results .resultsToday .info .visibility .quantity span {
+  font-size: 1.8rem;
+}
+
+.results .resultsToday .info .pressure .quantity {
+  font-size: 2.8rem;
+  font-weight: 600;
+  line-height: 0;
+  color: var(--textColorSecondary);
+}
+
+.results .resultsToday .info .pressure .quantity span {
+  font-size: 1.5rem;
 }

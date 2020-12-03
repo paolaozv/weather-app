@@ -33,7 +33,7 @@ type ContextProps = {
   results: ResultsType[] | null;
   loading: boolean;
   location: string | null;
-  weather: TypeWeather[];
+  weather: TypeWeather[] | null;
   searchQuery: () => void;
   getWeather: (id: number) => void;
   firstLoading: boolean;
@@ -49,7 +49,7 @@ const initialState = {
   location: null,
   loading: false,
   results: null,
-  weather: [],
+  weather: null,
   language: localStorageLang ? localStorageLang : 'EN',
   firstLoading: true,
 };
@@ -79,10 +79,6 @@ export const AppProvider: FC<AppProviderType> = ({ children }) => {
   }, []);
 
   const getWeatherId = useCallback(async (lat, long) => {
-    // dispatch({
-    //   type: ActionType.SET_FIRST_LOADING,
-    //   payload: true
-    // });
     const url = `${proxy}https://www.metaweather.com/api/location/search/?lattlong=${lat},${long}`;
     const response = await fetch(url);
     const locations = await response.json();

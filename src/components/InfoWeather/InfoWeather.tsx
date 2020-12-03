@@ -4,12 +4,13 @@ import { useGlobalContext } from '../../context';
 import SkeletonLoader from '../Skeleton/SkeletonLoader';
 import CardDay from '../CardDay/CardDay';
 import { formatDay, getWeatherState } from '../../utils';
+import { ReactComponent as Direction } from '../../assets/images/direction.svg';
 
 const InfoWeather = () => {
-  const { language, setLanguage, firstLoading, weather } = useGlobalContext();
+  const { language, setLanguage, firstLoading, weather, translate } = useGlobalContext();
   const [showDropDown, setShowDropDown] = useState(false);
   const dropdownEl = useRef<HTMLUListElement>(null);
-  weather.splice(5, 2);
+  const todayWeather = weather ? weather.slice(0, 1)[0] : null;
 
   const handleClickOutside = useCallback((e) => {
     if (showDropDown && e.target.closest('.dropdownList') !== dropdownEl.current) {
@@ -30,7 +31,7 @@ const InfoWeather = () => {
     }
   }, [handleClickOutside]);
 
-  if (firstLoading) {
+  if (firstLoading && !weather) {
     return (
       <SkeletonLoader />
     );
@@ -54,7 +55,7 @@ const InfoWeather = () => {
       </header>
       <div className={styles.results}>
         <div className={styles.resultsDays}>
-          {weather.map(({
+          {weather && weather.slice(0, 4).map(({
             applicable_date,
             id, max_temp,
             min_temp,
@@ -67,8 +68,45 @@ const InfoWeather = () => {
             )
           })}
         </div>
-        <div className={styles.resultsWind}>
-
+        <div className={styles.resultsToday}>
+          <p>{translate('subtitle')}</p>
+          <div className={styles.info}>
+            <div className={styles.wind}>
+              <p>{translate('status')}</p>
+              <p className={styles.windSpeed}>
+                {`${todayWeather && todayWeather.wind_speed.toFixed(0)} `}
+                <span>mph</span>
+              </p>
+              <p className={styles.direction}>
+                <Direction />
+                {`${todayWeather && todayWeather.wind_direction_compass}`}
+              </p>
+            </div>
+            <div className={styles.humidity}>
+              <p>{translate('humidity')}</p>
+              <p className={styles.humidityPercent}>
+                {`${todayWeather && todayWeather.humidity} `}
+                <span>%</span>
+              </p>
+              <div className={styles.totalPercent}>
+                <div className={styles.percent}></div>
+              </div>
+            </div>
+            <div className={styles.visibility}>
+              <p>{translate('visibility')}</p>
+              <p className={styles.quantity}>
+                {`${todayWeather && todayWeather.visibility.toFixed(1)} `}
+                <span>miles</span>
+              </p>
+            </div>
+            <div className={styles.pressure}>
+              <p>{translate('pressure')}</p>
+              <p className={styles.quantity}>
+                {`${todayWeather && todayWeather.air_pressure} `}
+                <span>mb</span>
+              </p>
+            </div>
+          </div>
         </div>
       </div>
       <footer className={styles.footer}>
