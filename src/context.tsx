@@ -63,6 +63,7 @@ export const AppProvider: FC<AppProviderType> = ({ children }) => {
   const [query, setQuery] = useState('');
 
   const getWeather = useCallback(async (woeid) => {
+    setQuery('');
     dispatch({
       type: ActionType.SET_LOADING,
       payload: true
@@ -155,7 +156,6 @@ export const AppProvider: FC<AppProviderType> = ({ children }) => {
   };
 
   const searchQuery = async () => {
-    // setQuery('');
     dispatch({
       type: ActionType.SET_LOADING,
       payload: true

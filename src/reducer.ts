@@ -56,7 +56,7 @@ const reducer = (state: AppStateType, action: AppActionType): AppStateType => {
     return { ...state, loading: false, results: action.payload };
   }
   if (action.type === 'DISPLAY_WEATHER') {
-    return { ...state, location: action.payload.title, weather: action.payload.consolidated_weather, loading: false, firstLoading: false };
+    return { ...state, location: action.payload.title, weather: action.payload.consolidated_weather, loading: false, firstLoading: false, results: null };
   }
   if (action.type === 'SET_FIRST_LOADING') {
     return { ...state, firstLoading: true };

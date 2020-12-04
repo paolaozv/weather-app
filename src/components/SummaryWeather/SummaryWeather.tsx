@@ -28,7 +28,7 @@ const SummaryWeather = () => {
     getWeather(id);
   };
 
-  if (firstLoading) {
+  if (firstLoading || loading) {
     return (
       <div className={styles.containerLoader}>
         <Loader />
@@ -45,13 +45,13 @@ const SummaryWeather = () => {
         {translate('searchButton')}
       </button>
       <div className={styles.summaryContainer}>
-        {weather && weather.slice(0, 1).map(({ id, the_temp, weather_state_abbr, weather_state_name }) => {
+        {weather && weather.slice(0, 1).map(({ id, the_temp, weather_state_abbr }) => {
           const img = getWeatherState(weather_state_abbr);
           return (
             <div key={id} className={styles.summary}>
               <img src={img} alt='weather' />
               <p className={styles.temp}>{`${the_temp.toFixed(0)} °C`}</p>
-              <p className={styles.state}>{weather_state_name}</p>
+              <p className={styles.state}>{translate(`${weather_state_abbr}`)}</p>
               <p className={styles.date}>{`Today · ${translate(date.day)}, ${date.dayNumber} ${translate(date.month)}`}</p>
               <p className={styles.location}>
                 <Location />

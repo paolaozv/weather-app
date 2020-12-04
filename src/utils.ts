@@ -79,3 +79,22 @@ export const formatDay = (date: string) => {
 
   return day;
 };
+
+export const windDirection: any = {
+  'N': 0,
+  'NE': 45,
+  'E': 90,
+  'SE': 135,
+  'S': 180,
+  'SW': 225,
+  'W': 270,
+  'NW': 315,
+  'NNE': 22.5,
+  'ENE': 67.5,
+  'ESE': 112.5,
+  'SSE': 157.5,
+  'SSW': 202.5,
+  'WSW': 247.5,
+  'WNW': 292.5,
+  'NNW': 337.5
+};

@@ -29,5 +29,15 @@
   "status": "Estado del viento",
   "humidity": "Humedad",
   "visibility": "Visibilidad",
-  "pressure": "Presión del aire"
+  "pressure": "Presión del aire",
+  "sn": "Nieve",
+  "sl": "Aguanieve",
+  "h": "Granizo",
+  "t": "Tormenta",
+  "hr": "Lluvia Torrencial",
+  "lr": "Llovizna",
+  "s": "Lluvia",
+  "hc": "Nubosidad Intensa",
+  "lc": "Nubosidad Ligera",
+  "c": "Despejado"
 }

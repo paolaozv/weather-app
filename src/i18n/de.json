@@ -29,5 +29,15 @@
   "status": "Windstatus",
   "humidity": "Feuchtigkeit",
   "visibility": "Sichtweite",
-  "pressure": "Luftdruck"
+  "pressure": "Luftdruck",
+  "sn": "Schnee",
+  "sl": "Schneeregen",
+  "h": "Hagel",
+  "t": "Gewitter",
+  "hr": "starker Regen",
+  "lr": "leichter Regen",
+  "s": "Regenschauer",
+  "hc": "starke Bewölkung",
+  "lc": "leicht Bewölkt",
+  "c": "Wolkenfreie"
 }

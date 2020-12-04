@@ -29,5 +29,15 @@
   "status": "Wind status",
   "humidity": "Humidity",
   "visibility": "Visibility",
-  "pressure": "Air pressure"
+  "pressure": "Air pressure",
+  "sn": "Snow",
+  "sl": "Sleet",
+  "h": "Hail",
+  "t": "Thunderstorm",
+  "hr": "Heavy Rain",
+  "lr": "Light Rain",
+  "s": "Showers",
+  "hc": "Heavy Cloud",
+  "lc": "Light Cloud",
+  "c": "Clear"
 }

@@ -3,7 +3,7 @@ import styles from './InfoWeather.module.css';
 import { useGlobalContext } from '../../context';
 import SkeletonLoader from '../Skeleton/SkeletonLoader';
 import CardDay from '../CardDay/CardDay';
-import { formatDay, getWeatherState } from '../../utils';
+import { formatDay, getWeatherState, windDirection } from '../../utils';
 import { ReactComponent as Direction } from '../../assets/images/direction.svg';
 
 const InfoWeather = () => {
@@ -11,6 +11,7 @@ const InfoWeather = () => {
   const [showDropDown, setShowDropDown] = useState(false);
   const dropdownEl = useRef<HTMLUListElement>(null);
   const todayWeather = weather ? weather.slice(0, 1)[0] : null;
+  const compass = todayWeather ? windDirection[`${todayWeather.wind_direction_compass}`] : 0;
 
   const handleClickOutside = useCallback((e) => {
     if (showDropDown && e.target.closest('.dropdownList') !== dropdownEl.current) {
@@ -31,7 +32,7 @@ const InfoWeather = () => {
     }
   }, [handleClickOutside]);
 
-  if (firstLoading && !weather) {
+  if (firstLoading) {
     return (
       <SkeletonLoader />
     );
@@ -55,7 +56,7 @@ const InfoWeather = () => {
       </header>
       <div className={styles.results}>
         <div className={styles.resultsDays}>
-          {weather && weather.slice(0, 4).map(({
+          {weather && weather.slice(0, 5).map(({
             applicable_date,
             id, max_temp,
             min_temp,
@@ -78,7 +79,7 @@ const InfoWeather = () => {
                 <span>mph</span>
               </p>
               <p className={styles.direction}>
-                <Direction />
+                <Direction style={{transform: `rotate(${compass}deg)`}} />
                 {`${todayWeather && todayWeather.wind_direction_compass}`}
               </p>
             </div>
@@ -89,7 +90,7 @@ const InfoWeather = () => {
                 <span>%</span>
               </p>
               <div className={styles.totalPercent}>
-                <div className={styles.percent}></div>
+                <div className={styles.percent} style={{width: `${todayWeather && todayWeather.humidity}%`}}></div>
               </div>
             </div>
             <div className={styles.visibility}>

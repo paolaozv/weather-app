@@ -131,10 +131,13 @@
 
 .results .resultsToday .info .wind .direction {
   font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .results .resultsToday .info .wind .direction svg {
-  margin-right: 5px;
+  margin-right: 8px;
 }
 
 .results .resultsToday .info .humidity .totalPercent {
@@ -145,7 +148,6 @@
 }
 
 .results .resultsToday .info .humidity .totalPercent .percent {
-  width: 80%;
   height: 8px;
   border-radius: 8px;
   background-color: var(--barColor);
