@@ -111,7 +111,7 @@ const InfoWeather = () => {
       </div>
       <footer className={styles.footer}>
         <p className={styles.footerText}>
-          @paolaozv
+          @paolaozv - @DevChallenges.io
         </p>
       </footer>
     </div>
