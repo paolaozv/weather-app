@@ -185,3 +185,33 @@
 .results .resultsToday .info .pressure .quantity span {
   font-size: 1.5rem;
 }
+
+@media only screen and (max-width: 1370px) {
+  .container {
+    padding: 30px 80px;
+    width: calc(100vw - 450px);
+  }
+}
+
+@media only screen and (max-width: 1280px) {
+  .container {
+    width: calc(100vw - 370px);
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .container {
+    width: 100vw;
+    height: auto;
+    padding: 20px 35px;
+  }
+
+  .header {
+    padding: 0 35px;
+  }
+
+  .results .resultsDays {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+}

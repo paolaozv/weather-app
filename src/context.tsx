@@ -76,7 +76,6 @@ export const AppProvider: FC<AppProviderType> = ({ children }) => {
       type: ActionType.DISPLAY_WEATHER,
       payload: { consolidated_weather, title }
     });
-    console.log(weather);
   }, []);
 
   const getWeatherId = useCallback(async (lat, long) => {
