@@ -7,7 +7,8 @@ import de from './i18n/de.json';
 // types
 import { ResultsType, TypeWeather } from './reducer';
 
-const proxy = 'https://cors-anywhere.herokuapp.com/';
+// const proxy = 'https://cors-anywhere.herokuapp.com/';
+const proxy = 'http://localhost:8080/';
 
 type AppProviderType = {
   children: ReactNode;
